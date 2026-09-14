@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1830" height="1020" viewBox="0 0 1830 1020" font-family="Liberation Sans, Arial, Helvetica, sans-serif">
+<rect x="0" y="0" width="1830" height="1020" fill="white"/>
+<rect x="40" y="110" width="280" height="330" fill="none" stroke="black" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="60" y="160" width="240" height="110" fill="none" stroke="black" stroke-width="2"/>
+<rect x="60" y="300" width="240" height="110" fill="none" stroke="black" stroke-width="2"/>
+<rect x="480" y="110" width="920" height="860" fill="none" stroke="black" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="520" y="160" width="840" height="66" fill="none" stroke="black" stroke-width="2"/>
+<rect x="520" y="262" width="840" height="66" fill="none" stroke="black" stroke-width="2"/>
+<rect x="520" y="374" width="840" height="200" fill="none" stroke="black" stroke-width="3"/>
+<rect x="540" y="424" width="260" height="132" fill="none" stroke="black" stroke-width="2"/>
+<rect x="820" y="424" width="260" height="110" fill="none" stroke="black" stroke-width="2"/>
+<rect x="1100" y="424" width="240" height="110" fill="none" stroke="black" stroke-width="2"/>
+<rect x="520" y="634" width="400" height="290" fill="none" stroke="black" stroke-width="3"/>
+<rect x="535" y="684" width="370" height="88" fill="none" stroke="black" stroke-width="2"/>
+<rect x="535" y="786" width="370" height="88" fill="none" stroke="black" stroke-width="2"/>
+<rect x="960" y="634" width="400" height="290" fill="none" stroke="black" stroke-width="3"/>
+<rect x="985" y="689" width="170" height="40" fill="none" stroke="black" stroke-width="2"/>
+<rect x="1165" y="689" width="170" height="40" fill="none" stroke="black" stroke-width="2"/>
+<rect x="985" y="741" width="170" height="40" fill="none" stroke="black" stroke-width="2"/>
+<rect x="1165" y="741" width="170" height="40" fill="none" stroke="black" stroke-width="2"/>
+<rect x="985" y="793" width="170" height="40" fill="none" stroke="black" stroke-width="2"/>
+<rect x="1165" y="793" width="170" height="40" fill="none" stroke="black" stroke-width="2"/>
+<path d="M 1540 716.0 L 1540 842.0 A 125.0 22 0 0 0 1790 842.0 L 1790 716.0" fill="white" stroke="black" stroke-width="2"/>
+<ellipse cx="1665.0" cy="716.0" rx="125.0" ry="22" fill="white" stroke="black" stroke-width="2"/>
+<path d="M 320 193.0 L 520 193.0" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="520.0,193.0 508.1,198.3 508.1,187.7" fill="black"/>
+<path d="M 940 226 L 940 262" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="940.0,262.0 934.7,250.1 945.3,250.1" fill="black"/>
+<path d="M 940 328 L 940 374" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="940.0,374.0 934.7,362.1 945.3,362.1" fill="black"/>
+<path d="M 1160 574 L 1160 634" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="1160.0,634.0 1154.7,622.1 1165.3,622.1" fill="black"/>
+<polygon points="1160.0,574.0 1165.3,585.9 1154.7,585.9" fill="black"/>
+<path d="M 1360 779.0 L 1540 779.0" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="1540.0,779.0 1528.1,784.3 1528.1,773.7" fill="black"/>
+<polygon points="1360.0,779.0 1371.9,773.7 1371.9,784.3" fill="black"/>
+<path d="M 720 574 L 720 634" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="720.0,634.0 714.7,622.1 725.3,622.1" fill="black"/>
+<path d="M 520 779.0 L 180 779.0 L 180 440" fill="none" stroke="black" stroke-width="2"/>
+<polygon points="180.0,440.0 185.3,451.9 174.7,451.9" fill="black"/>
+<text x="915.0" y="55.0" font-size="26" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">God's programmers - Jewelry Store MVC Architecture</text>
+<text x="180.0" y="134.0" font-size="19" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">CLIENT</text>
+<text x="180.0" y="179.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">End user</text>
+<text x="74.0" y="205.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Web browser</text>
+<text x="74.0" y="227.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Routes /*</text>
+<text x="74.0" y="249.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Browse, search, buy</text>
+<text x="180.0" y="319.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Administrator</text>
+<text x="74.0" y="345.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Web browser</text>
+<text x="74.0" y="367.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Routes /admin/* (role admin)</text>
+<text x="74.0" y="389.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">CRUD products, categories</text>
+<text x="940.0" y="134.0" font-size="19" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">SERVER - Laravel 13 (PHP)</text>
+<text x="940.0" y="179.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Routes (routes/web.php)</text>
+<text x="940.0" y="205.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">Maps each URL to Controller@method: end user (/*) and administrator (/admin/*)</text>
+<text x="940.0" y="281.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Middleware</text>
+<text x="940.0" y="307.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">auth (logged-in user)  ·  admin (AdminAuthMiddleware: role = admin)</text>
+<text x="940.0" y="398.0" font-size="19" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">CONTROLLER  (app/Http/Controllers)</text>
+<text x="670.0" y="443.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">End-user controllers</text>
+<text x="554.0" y="469.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">HomeController</text>
+<text x="554.0" y="491.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">ProductController</text>
+<text x="554.0" y="513.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">CartController</text>
+<text x="554.0" y="535.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">OrderController</text>
+<text x="950.0" y="443.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Admin controllers (Admin\)</text>
+<text x="834.0" y="469.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">AdminHomeController</text>
+<text x="834.0" y="491.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">AdminProductController</text>
+<text x="834.0" y="513.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">AdminCategoryController</text>
+<text x="1220.0" y="443.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Support</text>
+<text x="1114.0" y="469.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Auth\LoginController</text>
+<text x="1114.0" y="491.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Auth\RegisterController</text>
+<text x="1114.0" y="513.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">Form Requests (validation)</text>
+<text x="720.0" y="658.0" font-size="19" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">VIEW  (resources/views - Blade)</text>
+<text x="720.0" y="703.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">End-user views (extend layouts.app)</text>
+<text x="549.0" y="729.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">layouts/app.blade.php</text>
+<text x="549.0" y="751.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">home/ · product/ · cart/ · order/ · auth/</text>
+<text x="720.0" y="805.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Admin views (extend layouts.admin)</text>
+<text x="549.0" y="831.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">layouts/admin.blade.php</text>
+<text x="549.0" y="853.0" font-size="15" text-anchor="start" dominant-baseline="central" fill="black">admin/home/ · admin/product/ · admin/category/</text>
+<text x="720.0" y="902.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">Texts: resources/lang/en · resources/lang/es</text>
+<text x="1160.0" y="658.0" font-size="19" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">MODEL  (app/Models - Eloquent)</text>
+<text x="1070.0" y="709.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">User</text>
+<text x="1250.0" y="709.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Order</text>
+<text x="1070.0" y="761.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">OrderItem</text>
+<text x="1250.0" y="761.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Payment</text>
+<text x="1070.0" y="813.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Product</text>
+<text x="1250.0" y="813.0" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">Category</text>
+<text x="1160.0" y="867.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">Private attributes with getters / setters</text>
+<text x="1160.0" y="891.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">Relationships · domain methods</text>
+<text x="1665.0" y="756.0" font-size="19" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">MySQL</text>
+<text x="1665.0" y="786.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">categories · products · users</text>
+<text x="1665.0" y="810.0" font-size="15" text-anchor="middle" dominant-baseline="central" fill="black">orders · order_items · payments</text>
+<text x="420.0" y="179.0" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">1. HTTP request</text>
+<text x="952.0" y="244.0" font-size="14" font-weight="bold" text-anchor="start" dominant-baseline="central" fill="black">2. Route -&gt; Controller@method</text>
+<text x="952.0" y="351.0" font-size="14" font-weight="bold" text-anchor="start" dominant-baseline="central" fill="black">3. Access check</text>
+<text x="1172.0" y="604.0" font-size="14" font-weight="bold" text-anchor="start" dominant-baseline="central" fill="black">4. Eloquent (read / write)</text>
+<text x="1470.0" y="765.0" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">5. SQL</text>
+<text x="732.0" y="604.0" font-size="14" font-weight="bold" text-anchor="start" dominant-baseline="central" fill="black">6. $viewData</text>
+<text x="350.0" y="765.0" font-size="14" font-weight="bold" text-anchor="middle" dominant-baseline="central" fill="black">7. HTTP response (HTML)</text>
+</svg>
