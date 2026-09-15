@@ -75,7 +75,11 @@ class AdminCategoryController extends Controller
 
     public function delete(string $id): RedirectResponse
     {
-        Category::findOrFail($id)->delete();
+        $category = Category::findOrFail($id);
+        if ($category->getProducts()->isNotEmpty()) {
+            return redirect()->route('admin.category.index')->with('error', __('category.delete_has_products'));
+        }
+        $category->delete();
 
         return redirect()->route('admin.category.index')->with('status', __('category.deleted'));
     }

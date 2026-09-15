@@ -4,8 +4,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -19,6 +21,7 @@ class Category extends Model
      * $this->attributes['active'] - bool - contains whether the category is active
      * $this->attributes['created_at'] - timestamp - contains the category creation date
      * $this->attributes['updated_at'] - timestamp - contains the category update date
+     * $this->products - Product[] - contains the associated products
      */
     protected $fillable = [
         'name',
@@ -69,6 +72,21 @@ class Category extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function setProducts(Collection $products): void
+    {
+        $this->setRelation('products', $products);
     }
 
     public function activate(): void
