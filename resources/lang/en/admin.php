@@ -9,6 +9,7 @@ return [
     'welcome_title' => 'Welcome to the admin panel',
     'welcome_text' => 'Manage the Jewelry Men catalog from the menu on the left.',
     'nav_categories' => 'Categories',
+    'nav_products' => 'Products',
     'status' => 'Status',
     'active' => 'Active',
     'inactive' => 'Inactive',

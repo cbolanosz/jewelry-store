@@ -5,6 +5,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
+Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
 Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index')->middleware('admin');
 Route::get('/admin/categories', 'App\Http\Controllers\Admin\AdminCategoryController@index')->name('admin.category.index')->middleware('admin');
 Route::get('/admin/categories/create', 'App\Http\Controllers\Admin\AdminCategoryController@create')->name('admin.category.create')->middleware('admin');
@@ -14,4 +16,12 @@ Route::put('/admin/categories/{id}/update', 'App\Http\Controllers\Admin\AdminCat
 Route::put('/admin/categories/{id}/activate', 'App\Http\Controllers\Admin\AdminCategoryController@activate')->name('admin.category.activate')->middleware('admin');
 Route::put('/admin/categories/{id}/deactivate', 'App\Http\Controllers\Admin\AdminCategoryController@deactivate')->name('admin.category.deactivate')->middleware('admin');
 Route::delete('/admin/categories/{id}/delete', 'App\Http\Controllers\Admin\AdminCategoryController@delete')->name('admin.category.delete')->middleware('admin');
+Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name('admin.product.index')->middleware('admin');
+Route::get('/admin/products/create', 'App\Http\Controllers\Admin\AdminProductController@create')->name('admin.product.create')->middleware('admin');
+Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name('admin.product.store')->middleware('admin');
+Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name('admin.product.edit')->middleware('admin');
+Route::put('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name('admin.product.update')->middleware('admin');
+Route::put('/admin/products/{id}/activate', 'App\Http\Controllers\Admin\AdminProductController@activate')->name('admin.product.activate')->middleware('admin');
+Route::put('/admin/products/{id}/deactivate', 'App\Http\Controllers\Admin\AdminProductController@deactivate')->name('admin.product.deactivate')->middleware('admin');
+Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name('admin.product.delete')->middleware('admin');
 Auth::routes(['reset' => false]);

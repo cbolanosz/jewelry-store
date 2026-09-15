@@ -37,6 +37,10 @@ Developed by **God's programmers**: Cristian Bolaños (architect), Pablo José B
    ```bash
    php artisan migrate --seed
    ```
+6. Create the public link for the uploaded product images:
+   ```bash
+   php artisan storage:link
+   ```
 
 The project does not use NPM: Bootstrap is loaded from a CDN and the styles live in `public/css`.
 

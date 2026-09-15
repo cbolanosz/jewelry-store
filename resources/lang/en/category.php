@@ -15,4 +15,5 @@ return [
     'activated' => 'Category activated successfully.',
     'deactivated' => 'Category deactivated successfully.',
     'deleted' => 'Category deleted successfully.',
+    'delete_has_products' => 'This category has products and cannot be deleted. Deactivate it instead.',
 ];
