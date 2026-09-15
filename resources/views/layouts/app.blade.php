@@ -30,6 +30,7 @@
                         @if (Auth::user()->getRole() === 'admin')
                             <a class="nav-link" href="{{ route('admin.home.index') }}">{{ __('app.nav_admin') }}</a>
                         @endif
+                        <a class="nav-link" href="{{ route('order.index') }}">{{ __('app.nav_orders') }}</a>
                         <span class="nav-link user-name">{{ Auth::user()->getFirstName() }}</span>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -42,6 +43,16 @@
     </nav>
 
     <main class="flex-grow-1">
+        @if (session('status'))
+            <div class="container pt-4">
+                <div class="alert alert-success mb-0">{{ session('status') }}</div>
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="container pt-4">
+                <div class="alert alert-danger mb-0">{{ session('error') }}</div>
+            </div>
+        @endif
         @yield('content')
     </main>
 

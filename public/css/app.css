@@ -91,6 +91,30 @@ body {
     border-radius: 8px;
 }
 
+.order-status {
+    color: #ffffff;
+}
+
+.order-status-pending {
+    background-color: #6c757d;
+}
+
+.order-status-confirmed {
+    background-color: #0d6efd;
+}
+
+.order-status-shipped {
+    background-color: #b08d1f;
+}
+
+.order-status-delivered {
+    background-color: #198754;
+}
+
+.order-status-cancelled {
+    background-color: #dc3545;
+}
+
 .user-name {
     color: #c9a227 !important;
 }
