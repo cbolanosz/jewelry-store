@@ -17,6 +17,7 @@ Route::post('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->n
 Route::get('/orders', 'App\Http\Controllers\OrderController@index')->name('order.index')->middleware('auth');
 Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show')->name('order.show')->middleware('auth');
 Route::put('/orders/{id}/cancel', 'App\Http\Controllers\OrderController@cancel')->name('order.cancel')->middleware('auth');
+Route::get('/orders/{id}/invoice', 'App\Http\Controllers\OrderController@invoice')->name('order.invoice')->middleware('auth');
 Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index')->middleware('admin');
 Route::get('/admin/categories', 'App\Http\Controllers\Admin\AdminCategoryController@index')->name('admin.category.index')->middleware('admin');
 Route::get('/admin/categories/create', 'App\Http\Controllers\Admin\AdminCategoryController@create')->name('admin.category.create')->middleware('admin');

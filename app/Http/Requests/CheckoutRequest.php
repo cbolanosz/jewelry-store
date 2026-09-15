@@ -4,6 +4,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Payment;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CheckoutRequest extends FormRequest
@@ -17,6 +18,7 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'shipping_address' => 'required|string|max:255',
+            'method' => 'required|in:'.implode(',', Payment::getMethods()),
         ];
     }
 }
