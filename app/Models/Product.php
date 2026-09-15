@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -27,7 +28,9 @@ class Product extends Model
      * $this->attributes['category_id'] - int - contains the associated category id
      * $this->attributes['created_at'] - timestamp - contains the product creation date
      * $this->attributes['updated_at'] - timestamp - contains the product update date
+     * $this->attributes['units_sold'] - int - contains the units sold (only loaded by topSelling)
      * $this->category - Category - contains the associated category
+     * $this->orderItems - OrderItem[] - contains the associated order items
      */
     protected $fillable = [
         'name',
@@ -146,6 +149,11 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function getUnitsSold(): int
+    {
+        return (int) $this->attributes['units_sold'];
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -159,6 +167,21 @@ class Product extends Model
     public function setCategory(Category $category): void
     {
         $this->category()->associate($category);
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function getOrderItems(): Collection
+    {
+        return $this->orderItems;
+    }
+
+    public function setOrderItems(Collection $orderItems): void
+    {
+        $this->setRelation('orderItems', $orderItems);
     }
 
     public function updateStock(int $quantity): void
@@ -205,5 +228,23 @@ class Product extends Model
         }
 
         return $query->orderBy('name')->get();
+    }
+
+    public static function topSelling(int $limit): Collection
+    {
+        return Product::with('category')
+            ->where('active', true)
+            ->whereHas('orderItems.order', function ($orderQuery) {
+                $orderQuery->where('status', '!=', 'cancelled');
+            })
+            ->withSum(['orderItems as units_sold' => function ($itemQuery) {
+                $itemQuery->whereHas('order', function ($orderQuery) {
+                    $orderQuery->where('status', '!=', 'cancelled');
+                });
+            }], 'quantity')
+            ->orderBy('units_sold', 'desc')
+            ->orderBy('name')
+            ->take($limit)
+            ->get();
     }
 }

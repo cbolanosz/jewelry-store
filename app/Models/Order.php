@@ -4,9 +4,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -25,6 +27,7 @@ class Order extends Model
      * $this->attributes['created_at'] - timestamp - contains the order creation date
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated user
+     * $this->items - OrderItem[] - contains the associated order items
      */
     protected $fillable = [
         'date',
@@ -136,6 +139,28 @@ class Order extends Model
         $this->user()->associate($user);
     }
 
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function setItems(Collection $items): void
+    {
+        $this->setRelation('items', $items);
+    }
+
+    public function calculateSubtotal(): float
+    {
+        return round($this->getItems()->sum(function ($item) {
+            return $item->getSubtotal();
+        }), 2);
+    }
+
     public function calculateShippingCost(): float
     {
         if ($this->getSubtotal() >= 1000) {
@@ -168,6 +193,9 @@ class Order extends Model
 
     public function cancel(): void
     {
+        foreach ($this->getItems() as $item) {
+            $item->getProduct()->updateStock($item->getQuantity());
+        }
         $this->updateStatus('cancelled');
     }
 }

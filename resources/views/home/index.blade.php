@@ -11,6 +11,22 @@
         </div>
     </section>
 
+    @if ($viewData['topProducts']->isNotEmpty())
+        <section class="container pt-5">
+            <div class="text-center mb-4">
+                <h2 class="hero-title">{{ __('home.best_sellers_title') }}</h2>
+                <p class="text-secondary mb-0">{{ __('home.best_sellers_subtitle') }}</p>
+            </div>
+            <div class="row g-4">
+                @foreach ($viewData['topProducts'] as $product)
+                    <div class="col-md-4">
+                        @include('product.partials.card', ['product' => $product, 'showUnitsSold' => true])
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
+
     <section class="container py-5">
         <div class="row g-4">
             <div class="col-md-4">

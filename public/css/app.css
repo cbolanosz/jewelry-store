@@ -115,6 +115,17 @@ body {
     background-color: #dc3545;
 }
 
+.cart-thumb {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.cart-quantity {
+    width: 90px;
+}
+
 .user-name {
     color: #c9a227 !important;
 }

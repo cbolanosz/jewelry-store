@@ -96,7 +96,11 @@ class AdminProductController extends Controller
 
     public function delete(string $id): RedirectResponse
     {
-        Product::findOrFail($id)->delete();
+        $product = Product::findOrFail($id);
+        if ($product->getOrderItems()->isNotEmpty()) {
+            return redirect()->route('admin.product.index')->with('error', __('product.delete_has_order_items'));
+        }
+        $product->delete();
 
         return redirect()->route('admin.product.index')->with('status', __('product.deleted'));
     }
