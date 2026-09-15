@@ -4,6 +4,8 @@
 
 namespace App\Models;
 
+use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as InvoicePdf;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +30,7 @@ class Order extends Model
      * $this->attributes['updated_at'] - timestamp - contains the order update date
      * $this->user - User - contains the associated user
      * $this->items - OrderItem[] - contains the associated order items
+     * $this->payments - Payment[] - contains the associated payments
      */
     protected $fillable = [
         'date',
@@ -154,6 +157,21 @@ class Order extends Model
         $this->setRelation('items', $items);
     }
 
+    public function payments(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function getPayments(): Collection
+    {
+        return $this->payments;
+    }
+
+    public function setPayments(Collection $payments): void
+    {
+        $this->setRelation('payments', $payments);
+    }
+
     public function calculateSubtotal(): float
     {
         return round($this->getItems()->sum(function ($item) {
@@ -186,6 +204,21 @@ class Order extends Model
         $this->save();
     }
 
+    public function isPaid(): bool
+    {
+        return $this->getPayments()->contains(function ($payment) {
+            return $payment->getStatus() === 'approved';
+        });
+    }
+
+    public function generateInvoice(): InvoicePdf
+    {
+        $viewData = [];
+        $viewData['order'] = $this;
+
+        return Pdf::loadView('order.invoice', ['viewData' => $viewData]);
+    }
+
     public function isCancellable(): bool
     {
         return in_array($this->getStatus(), ['pending', 'confirmed']);
@@ -195,6 +228,11 @@ class Order extends Model
     {
         foreach ($this->getItems() as $item) {
             $item->getProduct()->updateStock($item->getQuantity());
+        }
+        foreach ($this->getPayments() as $payment) {
+            if ($payment->getStatus() === 'approved') {
+                $payment->refund();
+            }
         }
         $this->updateStatus('cancelled');
     }
