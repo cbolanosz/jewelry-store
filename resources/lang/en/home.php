@@ -4,6 +4,8 @@
 
 return [
     'title' => 'Home',
+    'best_sellers_title' => 'Best sellers',
+    'best_sellers_subtitle' => 'The most wanted pieces of our collection.',
     'hero_title' => 'Timeless luxury, crafted for you',
     'hero_text' => 'Discover luxury watches from the finest houses and fine jewelry made of gold, diamonds and precious stones.',
     'watches_title' => 'Luxury watches',
