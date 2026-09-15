@@ -37,6 +37,16 @@
                         @error('shipping_address')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                        <label for="method" class="form-label mt-3">{{ __('payment.method') }}</label>
+                        <select id="method" class="form-select @error('method') is-invalid @enderror" name="method" required>
+                            @foreach ($viewData['paymentMethods'] as $method)
+                                <option value="{{ $method }}" @selected(old('method') === $method)>{{ __('payment.method_'.$method) }}</option>
+                            @endforeach
+                        </select>
+                        @error('method')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <p class="small text-secondary mt-2 mb-0">{{ __('payment.simulated_notice') }}</p>
                         <button type="submit" class="btn btn-gold w-100 mt-3">{{ __('cart.place_order_button') }}</button>
                     </div>
                 </form>

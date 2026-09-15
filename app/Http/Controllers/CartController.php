@@ -8,6 +8,7 @@ use App\Http\Requests\CartItemRequest;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
@@ -81,6 +82,7 @@ class CartController extends Controller
         $viewData['title'] = __('cart.checkout_title').' - '.__('app.brand');
         $viewData['cart'] = $cart;
         $viewData['shippingAddress'] = Auth::user()->getAddress();
+        $viewData['paymentMethods'] = Payment::getMethods();
 
         return view('cart.checkout')->with('viewData', $viewData);
     }
@@ -108,6 +110,16 @@ class CartController extends Controller
             $item->getProduct()->updateStock(-$item->getQuantity());
         }
         $request->session()->forget('cart');
+
+        $payment = new Payment;
+        $payment->setAmount($order->getTotalAmount());
+        $payment->setMethod($request->input('method'));
+        $payment->setOrder($order);
+        $payment->process();
+        if ($payment->getStatus() !== 'approved') {
+            return redirect()->route('order.show', ['id' => $order->getId()])->with('error', __('cart.payment_rejected'));
+        }
+        $order->confirm();
 
         return redirect()->route('order.show', ['id' => $order->getId()])->with('status', __('cart.purchased'));
     }

@@ -19,8 +19,25 @@
                             <dt class="col-sm-5">{{ __('order.date') }}</dt>
                             <dd class="col-sm-7">{{ $viewData['order']->getDate() }}</dd>
                             <dt class="col-sm-5">{{ __('order.shipping_address') }}</dt>
-                            <dd class="col-sm-7 mb-0">{{ $viewData['order']->getShippingAddress() }}</dd>
+                            <dd class="col-sm-7">{{ $viewData['order']->getShippingAddress() }}</dd>
                         </dl>
+                        <h2 class="h5 product-title mt-2">{{ __('payment.title') }}</h2>
+                        @if ($viewData['order']->getPayments()->isEmpty())
+                            <p class="text-secondary mb-0">{{ __('payment.none') }}</p>
+                        @else
+                            @foreach ($viewData['order']->getPayments() as $payment)
+                                <dl class="row mb-0">
+                                    <dt class="col-sm-5">{{ __('payment.method') }}</dt>
+                                    <dd class="col-sm-7">{{ __('payment.method_'.$payment->getMethod()) }}</dd>
+                                    <dt class="col-sm-5">{{ __('payment.status') }}</dt>
+                                    <dd class="col-sm-7">{{ __('payment.status_'.$payment->getStatus()) }}</dd>
+                                    <dt class="col-sm-5">{{ __('payment.transaction_code') }}</dt>
+                                    <dd class="col-sm-7">{{ $payment->getTransactionCode() }}</dd>
+                                    <dt class="col-sm-5">{{ __('payment.date') }}</dt>
+                                    <dd class="col-sm-7 mb-0">{{ $payment->getDate() }}</dd>
+                                </dl>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -42,6 +59,9 @@
                             <dt class="col-6 border-top pt-2">{{ __('order.total_amount') }}</dt>
                             <dd class="col-6 text-end border-top pt-2 product-price mb-0">{{ __('product.price_value', ['price' => number_format($viewData['order']->getTotalAmount(), 2)]) }}</dd>
                         </dl>
+                        @if ($viewData['order']->isPaid())
+                            <a class="btn btn-gold w-100 mt-4" href="{{ route('order.invoice', ['id' => $viewData['order']->getId()]) }}">{{ __('order.download_invoice') }}</a>
+                        @endif
                         @if ($viewData['order']->isCancellable())
                             <form method="POST" action="{{ route('order.cancel', ['id' => $viewData['order']->getId()]) }}" class="mt-4">
                                 @csrf

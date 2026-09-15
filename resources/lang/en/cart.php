@@ -27,6 +27,7 @@ return [
     'updated' => 'Cart updated.',
     'removed' => 'Product removed from your cart.',
     'cleared' => 'Your cart was emptied.',
-    'purchased' => 'Thank you! Your order was placed.',
+    'purchased' => 'Thank you! Your payment was approved and your order was confirmed.',
+    'payment_rejected' => 'Your payment was rejected. The order is pending payment.',
     'not_available' => 'There are not enough units of :product. Available: :stock.',
 ];
