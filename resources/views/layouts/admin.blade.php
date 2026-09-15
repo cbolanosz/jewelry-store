@@ -18,6 +18,7 @@
             </a>
             <nav class="nav nav-pills flex-column gap-1">
                 <a class="nav-link" href="{{ route('admin.home.index') }}">{{ __('admin.dashboard') }}</a>
+                <a class="nav-link" href="{{ route('admin.category.index') }}">{{ __('admin.nav_categories') }}</a>
             </nav>
         </aside>
 
@@ -28,6 +29,9 @@
             </header>
 
             <main class="flex-grow-1 p-4">
+                @if (session('status'))
+                    <div class="alert alert-success">{{ session('status') }}</div>
+                @endif
                 @yield('content')
             </main>
         </div>
