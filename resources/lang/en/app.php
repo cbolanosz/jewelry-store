@@ -7,6 +7,7 @@ return [
     'brand_short' => 'JM',
     'tagline' => 'Luxury watches and fine jewelry',
     'nav_home' => 'Home',
+    'nav_products' => 'Products',
     'nav_login' => 'Log in',
     'nav_register' => 'Register',
     'nav_admin' => 'Admin panel',
