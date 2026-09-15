@@ -29,6 +29,16 @@
                         @endif
                     </dd>
                 </dl>
+                @if ($viewData['product']->checkAvailability(1))
+                    <form method="POST" action="{{ route('cart.add', ['id' => $viewData['product']->getId()]) }}" class="d-flex gap-2 mt-4">
+                        @csrf
+                        <input type="number" class="form-control cart-quantity @error('quantity') is-invalid @enderror" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" aria-label="{{ __('cart.quantity') }}" required>
+                        <button type="submit" class="btn btn-gold">{{ __('cart.add_button') }}</button>
+                    </form>
+                    @error('quantity')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                @endif
             </div>
         </div>
     </section>

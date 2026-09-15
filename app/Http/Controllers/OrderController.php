@@ -22,7 +22,7 @@ class OrderController extends Controller
 
     public function show(string $id): View
     {
-        $order = Order::where('user_id', Auth::user()->getId())->findOrFail($id);
+        $order = Order::with('items.product')->where('user_id', Auth::user()->getId())->findOrFail($id);
 
         $viewData = [];
         $viewData['title'] = __('order.show_title', ['id' => $order->getId()]).' - '.__('app.brand');
@@ -33,7 +33,7 @@ class OrderController extends Controller
 
     public function cancel(string $id): RedirectResponse
     {
-        $order = Order::where('user_id', Auth::user()->getId())->findOrFail($id);
+        $order = Order::with('items.product')->where('user_id', Auth::user()->getId())->findOrFail($id);
         if (! $order->isCancellable()) {
             return redirect()->route('order.show', ['id' => $order->getId()])->with('error', __('order.not_cancellable'));
         }

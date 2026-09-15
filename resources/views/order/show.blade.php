@@ -53,5 +53,38 @@
                 </div>
             </div>
         </div>
+
+        <div class="card auth-card mt-4">
+            <div class="card-body p-0">
+                <h2 class="h5 product-title p-3 mb-0">{{ __('order.items') }}</h2>
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th class="ps-3">{{ __('order.product') }}</th>
+                                <th class="text-end">{{ __('order.unit_price') }}</th>
+                                <th class="text-end">{{ __('order.quantity') }}</th>
+                                <th class="text-end pe-3">{{ __('order.subtotal') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($viewData['order']->getItems() as $item)
+                                <tr>
+                                    <td class="ps-3">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <img class="cart-thumb" src="{{ $item->getProduct()->getImageUrl() }}" alt="{{ $item->getProduct()->getName() }}">
+                                            <a href="{{ route('product.show', ['id' => $item->getProduct()->getId()]) }}">{{ $item->getProduct()->getName() }}</a>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">{{ __('product.price_value', ['price' => number_format($item->getUnitPrice(), 2)]) }}</td>
+                                    <td class="text-end">{{ $item->getQuantity() }}</td>
+                                    <td class="text-end pe-3">{{ __('product.price_value', ['price' => number_format($item->getSubtotal(), 2)]) }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
