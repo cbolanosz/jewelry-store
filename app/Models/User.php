@@ -177,6 +177,11 @@ class User extends Authenticatable
         $this->setRelation('orders', $orders);
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->getRole() === 'admin';
+    }
+
     public function login(): void
     {
         Auth::login($this);

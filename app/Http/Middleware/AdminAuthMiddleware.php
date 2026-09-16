@@ -13,7 +13,7 @@ class AdminAuthMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::user()->getRole() === 'admin') {
+        if (Auth::user() && Auth::user()->isAdmin()) {
             return $next($request);
         }
 
