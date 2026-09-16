@@ -28,7 +28,7 @@
                         <a class="nav-link" href="{{ route('login') }}">{{ __('app.nav_login') }}</a>
                         <a class="nav-link" href="{{ route('register') }}">{{ __('app.nav_register') }}</a>
                     @else
-                        @if (Auth::user()->getRole() === 'admin')
+                        @if (Auth::user()->isAdmin())
                             <a class="nav-link" href="{{ route('admin.home.index') }}">{{ __('app.nav_admin') }}</a>
                         @endif
                         <a class="nav-link" href="{{ route('order.index') }}">{{ __('app.nav_orders') }}</a>
