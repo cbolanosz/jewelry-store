@@ -33,6 +33,7 @@ class OrderItem extends Model
         'product_id',
     ];
 
+    // Setters
     public function setQuantity(int $quantity): void
     {
         $this->attributes['quantity'] = $quantity;
@@ -58,6 +59,7 @@ class OrderItem extends Model
         $this->attributes['product_id'] = $productId;
     }
 
+    // Getters
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -98,6 +100,7 @@ class OrderItem extends Model
         return $this->attributes['updated_at'];
     }
 
+    // Relationships
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
@@ -128,6 +131,7 @@ class OrderItem extends Model
         $this->product()->associate($product);
     }
 
+    // Domain methods
     public function calculateSubtotal(): float
     {
         return round($this->getUnitPrice() * $this->getQuantity(), 2);

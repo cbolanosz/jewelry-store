@@ -37,6 +37,11 @@ Developed by **God's programmers**: Cristian Bolaños (architect), Pablo José B
    ```bash
    php artisan migrate --seed
    ```
+   Alternatively, create the empty tables and import the test rows exported from our database:
+   ```bash
+   php artisan migrate
+   mysql -u root -p jewelry_store < database/data.sql
+   ```
 6. Create the public link for the uploaded product images:
    ```bash
    php artisan storage:link

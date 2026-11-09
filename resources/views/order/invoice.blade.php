@@ -13,7 +13,7 @@
             </td>
             <td class="text-right">
                 <h1>{{ __('order.invoice_title', ['id' => $viewData['order']->getId()]) }}</h1>
-                <div class="muted">{{ __('order.invoice_order_date') }}: {{ $viewData['order']->getDate() }}</div>
+                <div class="muted">{{ __('order.invoice_order_date') }}: {{ $viewData['order']->getCreatedAt() }}</div>
             </td>
         </tr>
     </table>

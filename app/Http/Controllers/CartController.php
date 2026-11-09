@@ -6,11 +6,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CartItemRequest;
 use App\Http\Requests\CheckoutRequest;
-use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Collection;
+use App\Util\CartUtil;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +20,7 @@ class CartController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('cart.title').' - '.__('app.brand');
-        $viewData['cart'] = $this->buildOrder($request->session()->get('cart', []));
+        $viewData['cart'] = CartUtil::buildOrder($request->session()->get('cart', []));
 
         return view('cart.index')->with('viewData', $viewData);
     }
@@ -73,14 +71,14 @@ class CartController extends Controller
 
     public function checkout(Request $request): View|RedirectResponse
     {
-        $cart = $this->buildOrder($request->session()->get('cart', []));
-        if ($cart->getItems()->isEmpty()) {
+        $order = CartUtil::buildOrder($request->session()->get('cart', []));
+        if ($order->getItems()->isEmpty()) {
             return redirect()->route('cart.index')->with('error', __('cart.empty'));
         }
 
         $viewData = [];
         $viewData['title'] = __('cart.checkout_title').' - '.__('app.brand');
-        $viewData['cart'] = $cart;
+        $viewData['cart'] = $order;
         $viewData['shippingAddress'] = Auth::user()->getAddress();
         $viewData['paymentMethods'] = Payment::getMethods();
 
@@ -89,7 +87,7 @@ class CartController extends Controller
 
     public function purchase(CheckoutRequest $request): RedirectResponse
     {
-        $order = $this->buildOrder($request->session()->get('cart', []));
+        $order = CartUtil::buildOrder($request->session()->get('cart', []));
         if ($order->getItems()->isEmpty()) {
             return redirect()->route('cart.index')->with('error', __('cart.empty'));
         }
@@ -99,7 +97,6 @@ class CartController extends Controller
             }
         }
 
-        $order->setDate(date('Y-m-d'));
         $order->setStatus('pending');
         $order->setShippingAddress($request->input('shipping_address'));
         $order->setUser(Auth::user());
@@ -122,27 +119,5 @@ class CartController extends Controller
         $order->confirm();
 
         return redirect()->route('order.show', ['id' => $order->getId()])->with('status', __('cart.purchased'));
-    }
-
-    private function buildOrder(array $cart): Order
-    {
-        $items = new Collection;
-        $products = Product::where('active', true)->whereIn('id', array_keys($cart))->orderBy('name')->get();
-        foreach ($products as $product) {
-            $item = new OrderItem;
-            $item->setProduct($product);
-            $item->setQuantity($cart[$product->getId()]);
-            $item->setUnitPrice($product->getPrice());
-            $item->setSubtotal($item->calculateSubtotal());
-            $items->push($item);
-        }
-
-        $order = new Order;
-        $order->setItems($items);
-        $order->setSubtotal($order->calculateSubtotal());
-        $order->setShippingCost($order->calculateShippingCost());
-        $order->setTotalAmount($order->calculateTotal());
-
-        return $order;
     }
 }

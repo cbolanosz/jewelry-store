@@ -15,13 +15,13 @@ class OrderFactory extends Factory
         $shippingCost = $subtotal >= 1000 ? 0 : 25;
 
         return [
-            'date' => fake()->dateTimeBetween('-1 year')->format('Y-m-d'),
             'status' => fake()->randomElement(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']),
             'shipping_address' => fake()->streetAddress().', '.fake()->city(),
             'subtotal' => $subtotal,
             'shipping_cost' => $shippingCost,
             'total_amount' => round($subtotal + $shippingCost, 2),
             'user_id' => User::factory(),
+            'created_at' => fake()->dateTimeBetween('-1 year'),
         ];
     }
 }

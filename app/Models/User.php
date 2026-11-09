@@ -57,6 +57,7 @@ class User extends Authenticatable
         ];
     }
 
+    // Setters
     public function setFirstName(string $firstName): void
     {
         $this->attributes['first_name'] = $firstName;
@@ -102,6 +103,7 @@ class User extends Authenticatable
         $this->attributes['active'] = $active;
     }
 
+    // Getters
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -162,6 +164,7 @@ class User extends Authenticatable
         return $this->attributes['updated_at'];
     }
 
+    // Relationships
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
@@ -177,6 +180,7 @@ class User extends Authenticatable
         $this->setRelation('orders', $orders);
     }
 
+    // Domain methods
     public function isAdmin(): bool
     {
         return $this->getRole() === 'admin';

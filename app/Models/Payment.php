@@ -35,6 +35,7 @@ class Payment extends Model
         'order_id',
     ];
 
+    // Setters
     public function setAmount(float $amount): void
     {
         $this->attributes['amount'] = $amount;
@@ -65,6 +66,7 @@ class Payment extends Model
         $this->attributes['order_id'] = $orderId;
     }
 
+    // Getters
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -110,6 +112,7 @@ class Payment extends Model
         return $this->attributes['updated_at'];
     }
 
+    // Relationships
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
@@ -125,6 +128,7 @@ class Payment extends Model
         $this->order()->associate($order);
     }
 
+    // Domain methods
     public static function getMethods(): array
     {
         return ['credit_card', 'debit_card', 'bank_transfer'];

@@ -31,7 +31,7 @@
                             @foreach ($viewData['orders'] as $order)
                                 <tr>
                                     <td class="ps-4 fw-semibold">#{{ $order->getId() }}</td>
-                                    <td>{{ $order->getDate() }}</td>
+                                    <td>{{ $order->getCreatedAt() }}</td>
                                     <td>
                                         <span class="badge order-status order-status-{{ $order->getStatus() }}">{{ __('order.status_'.$order->getStatus()) }}</span>
                                     </td>
