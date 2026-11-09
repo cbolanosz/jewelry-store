@@ -14,6 +14,9 @@
                 <small class="text-secondary text-uppercase">{{ $viewData['product']->getCategory()->getName() }}</small>
                 <h1 class="product-title mt-1">{{ $viewData['product']->getName() }}</h1>
                 <p class="product-price fs-3">{{ __('product.price_value', ['price' => number_format($viewData['product']->getPrice(), 2)]) }}</p>
+                @if ($viewData['priceInCop'] !== null)
+                    <p class="text-secondary">{{ __('exchange.price_in_cop', ['price' => number_format($viewData['priceInCop'], 0)]) }}</p>
+                @endif
                 <p class="text-secondary">{{ $viewData['product']->getDescription() }}</p>
                 <dl class="row">
                     <dt class="col-sm-4">{{ __('product.material') }}</dt>

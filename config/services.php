@@ -38,4 +38,9 @@ return [
     'allied_products' => [
         'url' => env('ALLIED_PRODUCTS_URL'),
     ],
+
+    'exchange_rate' => [
+        'url' => env('EXCHANGE_RATE_URL'),
+        'key' => env('EXCHANGE_RATE_KEY'),
+    ],
 ];
