@@ -24,7 +24,7 @@ class PaymentSeeder extends Seeder
             Payment::factory()->create([
                 'order_id' => $order->getId(),
                 'amount' => $order->getTotalAmount(),
-                'date' => $order->getDate(),
+                'date' => $order->getCreatedAt(),
                 'status' => $status,
             ]);
         }

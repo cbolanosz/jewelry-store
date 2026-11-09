@@ -16,7 +16,7 @@ class OrderController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('order.index_title').' - '.__('app.brand');
-        $viewData['orders'] = Order::where('user_id', Auth::user()->getId())->orderBy('date', 'desc')->orderBy('id', 'desc')->get();
+        $viewData['orders'] = Order::where('user_id', Auth::user()->getId())->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
 
         return view('order.index')->with('viewData', $viewData);
     }

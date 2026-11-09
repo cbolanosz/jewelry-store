@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <dl class="row mb-0">
                             <dt class="col-sm-5">{{ __('order.date') }}</dt>
-                            <dd class="col-sm-7">{{ $viewData['order']->getDate() }}</dd>
+                            <dd class="col-sm-7">{{ $viewData['order']->getCreatedAt() }}</dd>
                             <dt class="col-sm-5">{{ __('order.shipping_address') }}</dt>
                             <dd class="col-sm-7">{{ $viewData['order']->getShippingAddress() }}</dd>
                         </dl>

@@ -19,7 +19,6 @@ class Order extends Model
     /**
      * ORDER ATTRIBUTES
      * $this->attributes['id'] - int - contains the order primary key (id)
-     * $this->attributes['date'] - date - contains the order date
      * $this->attributes['status'] - string - contains the order status (pending, confirmed, shipped, delivered or cancelled)
      * $this->attributes['shipping_address'] - string - contains the order shipping address
      * $this->attributes['subtotal'] - float - contains the order subtotal
@@ -33,7 +32,6 @@ class Order extends Model
      * $this->payments - Payment[] - contains the associated payments
      */
     protected $fillable = [
-        'date',
         'status',
         'shipping_address',
         'subtotal',
@@ -42,11 +40,7 @@ class Order extends Model
         'user_id',
     ];
 
-    public function setDate(string $date): void
-    {
-        $this->attributes['date'] = $date;
-    }
-
+    // Setters
     public function setStatus(string $status): void
     {
         $this->attributes['status'] = $status;
@@ -77,14 +71,10 @@ class Order extends Model
         $this->attributes['user_id'] = $userId;
     }
 
+    // Getters
     public function getId(): int
     {
         return $this->attributes['id'];
-    }
-
-    public function getDate(): string
-    {
-        return $this->attributes['date'];
     }
 
     public function getStatus(): string
@@ -127,6 +117,7 @@ class Order extends Model
         return $this->attributes['updated_at'];
     }
 
+    // Relationships
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -172,6 +163,7 @@ class Order extends Model
         $this->setRelation('payments', $payments);
     }
 
+    // Domain methods
     public function calculateSubtotal(): float
     {
         return round($this->getItems()->sum(function ($item) {
