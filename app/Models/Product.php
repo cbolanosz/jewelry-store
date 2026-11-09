@@ -251,4 +251,16 @@ class Product extends Model
             ->take($limit)
             ->get();
     }
+
+    public static function inStock(): Collection
+    {
+        return Product::with('category')
+            ->where('active', true)
+            ->where('stock', '>', 0)
+            ->whereHas('category', function ($categoryQuery) {
+                $categoryQuery->where('active', true);
+            })
+            ->orderBy('name')
+            ->get();
+    }
 }
