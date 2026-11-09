@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'allied_products' => [
+        'url' => env('ALLIED_PRODUCTS_URL'),
+    ],
 ];
