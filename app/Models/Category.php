@@ -29,6 +29,7 @@ class Category extends Model
         'active',
     ];
 
+    // Setters
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
@@ -44,6 +45,7 @@ class Category extends Model
         $this->attributes['active'] = $active;
     }
 
+    // Getters
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -74,6 +76,7 @@ class Category extends Model
         return $this->attributes['updated_at'];
     }
 
+    // Relationships
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
@@ -89,6 +92,7 @@ class Category extends Model
         $this->setRelation('products', $products);
     }
 
+    // Domain methods
     public function activate(): void
     {
         $this->setActive(true);

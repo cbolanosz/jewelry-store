@@ -44,6 +44,7 @@ class Product extends Model
         'category_id',
     ];
 
+    // Setters
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
@@ -89,6 +90,7 @@ class Product extends Model
         $this->attributes['category_id'] = $categoryId;
     }
 
+    // Getters
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -154,6 +156,7 @@ class Product extends Model
         return (int) $this->attributes['units_sold'];
     }
 
+    // Relationships
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -184,6 +187,7 @@ class Product extends Model
         $this->setRelation('orderItems', $orderItems);
     }
 
+    // Domain methods
     public function updateStock(int $quantity): void
     {
         $this->setStock($this->getStock() + $quantity);
