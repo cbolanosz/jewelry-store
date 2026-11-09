@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductSearchRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Util\ExchangeRateUtil;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -34,6 +35,7 @@ class ProductController extends Controller
         $viewData = [];
         $viewData['title'] = $product->getName().' - '.__('app.brand');
         $viewData['product'] = $product;
+        $viewData['priceInCop'] = ExchangeRateUtil::convertUsdToCop($product->getPrice());
 
         return view('product.show')->with('viewData', $viewData);
     }
