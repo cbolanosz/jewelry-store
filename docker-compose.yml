@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jewelry-store-app
+    env_file:
+      - .env
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - jewelry_store_storage:/var/www/html/storage
+      - jewelry_store_public_storage:/var/www/html/public/storage
+
+volumes:
+  jewelry_store_storage:
+  jewelry_store_public_storage:
