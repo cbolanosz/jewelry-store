@@ -5,7 +5,7 @@
 
 @section('content')
     <section class="container py-5">
-        <a class="d-inline-block mb-4" href="{{ route('cart.index') }}">{{ __('cart.back_to_cart') }}</a>
+        <a class="back-link mb-4" href="{{ route('cart.index') }}">{{ __('cart.back_to_cart') }}</a>
         <h1 class="product-title mb-4">{{ __('cart.checkout_title') }}</h1>
 
         <div class="row g-4">

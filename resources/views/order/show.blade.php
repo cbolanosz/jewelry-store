@@ -5,7 +5,7 @@
 
 @section('content')
     <section class="container py-5">
-        <a class="d-inline-block mb-4" href="{{ route('order.index') }}">{{ __('order.back_to_orders') }}</a>
+        <a class="back-link mb-4" href="{{ route('order.index') }}">{{ __('order.back_to_orders') }}</a>
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
             <h1 class="product-title mb-0">{{ __('order.show_title', ['id' => $viewData['order']->getId()]) }}</h1>
             <span class="badge fs-6 order-status order-status-{{ $viewData['order']->getStatus() }}">{{ __('order.status_'.$viewData['order']->getStatus()) }}</span>

@@ -8,6 +8,7 @@ return [
     'tagline' => 'Luxury watches and fine jewelry',
     'nav_home' => 'Home',
     'nav_products' => 'Products',
+    'nav_allied' => 'Allied products',
     'nav_cart' => 'Cart',
     'nav_login' => 'Log in',
     'nav_register' => 'Register',

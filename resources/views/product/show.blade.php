@@ -5,7 +5,7 @@
 
 @section('content')
     <section class="container py-5">
-        <a class="d-inline-block mb-4" href="{{ route('product.index') }}">{{ __('product.back_to_catalog') }}</a>
+        <a class="back-link mb-4" href="{{ route('product.index') }}">{{ __('product.back_to_catalog') }}</a>
         <div class="row g-5">
             <div class="col-md-6">
                 <img class="product-image" src="{{ $viewData['product']->getImageUrl() }}" alt="{{ $viewData['product']->getName() }}">

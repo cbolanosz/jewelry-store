@@ -223,3 +223,27 @@ textarea:focus-visible {
         padding: 0.65rem 0;
     }
 }
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    color: #1c1c1c;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.back-link::before {
+    content: "\2190";
+    color: #c9a227;
+    transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+    color: #8a6d12;
+}
+
+.back-link:hover::before {
+    transform: translateX(-4px);
+}

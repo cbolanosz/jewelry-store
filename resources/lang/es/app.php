@@ -8,6 +8,7 @@ return [
     'tagline' => 'Relojes de lujo y joyería fina',
     'nav_home' => 'Inicio',
     'nav_products' => 'Productos',
+    'nav_allied' => 'Productos aliados',
     'nav_cart' => 'Carrito',
     'nav_login' => 'Iniciar sesión',
     'nav_register' => 'Registrarse',

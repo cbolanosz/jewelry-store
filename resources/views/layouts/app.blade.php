@@ -24,6 +24,7 @@
                 <div class="navbar-nav ms-auto align-items-lg-center">
                     <a class="nav-link" href="{{ route('home.index') }}">{{ __('app.nav_home') }}</a>
                     <a class="nav-link" href="{{ route('product.index') }}">{{ __('app.nav_products') }}</a>
+                    <a class="nav-link" href="{{ route('allied.index') }}">{{ __('app.nav_allied') }}</a>
                     <a class="nav-link" href="{{ route('cart.index') }}">{{ __('app.nav_cart') }}</a>
                     @guest
                         <a class="nav-link" href="{{ route('login') }}">{{ __('app.nav_login') }}</a>
