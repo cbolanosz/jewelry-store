@@ -5,8 +5,8 @@ namespace App\Providers;
 use App\Contracts\SalesReportGenerator;
 use App\Reports\ExcelSalesReportGenerator;
 use App\Reports\PdfSalesReportGenerator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\Paginator;    
 
 class AppServiceProvider extends ServiceProvider
 {
