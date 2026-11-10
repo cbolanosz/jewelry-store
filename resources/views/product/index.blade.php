@@ -68,7 +68,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="d-flex justify-content-center mt-5">
+            <div class="mt-5">
                 {{ $viewData['products']->withQueryString()->links() }}
             </div>
         @endif
