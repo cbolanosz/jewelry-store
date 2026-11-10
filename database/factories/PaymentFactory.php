@@ -13,9 +13,9 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'amount' => fake()->randomFloat(2, 500, 50000),
-            'method' => fake()->randomElement(['credit_card', 'debit_card', 'bank_transfer']),
-            'date' => fake()->dateTimeBetween('-1 year')->format('Y-m-d'),
+            'amount' => $this->faker->randomFloat(2, 500, 50000),
+            'method' => $this->faker->randomElement(['credit_card', 'debit_card', 'bank_transfer']),
+            'date' => $this->faker->dateTimeBetween('-1 year')->format('Y-m-d'),
             'status' => 'approved',
             'transaction_code' => 'TX-'.strtoupper(Str::random(12)),
             'order_id' => Order::factory(),

@@ -12,8 +12,8 @@ class OrderItemFactory extends Factory
 {
     public function definition(): array
     {
-        $quantity = fake()->numberBetween(1, 3);
-        $unitPrice = fake()->randomFloat(2, 500, 50000);
+        $quantity = $this->faker->numberBetween(1, 3);
+        $unitPrice = $this->faker->randomFloat(2, 500, 50000);
 
         return [
             'quantity' => $quantity,

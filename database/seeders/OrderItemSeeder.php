@@ -7,18 +7,20 @@ namespace Database\Seeders;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
 
 class OrderItemSeeder extends Seeder
 {
     public function run(): void
     {
+        $faker = app(Generator::class);
         $products = Product::all();
         $orders = Order::all();
 
         foreach ($orders as $order) {
-            foreach ($products->random(fake()->numberBetween(1, 3)) as $product) {
-                $quantity = fake()->numberBetween(1, 2);
+            foreach ($products->random($faker->numberBetween(1, 3)) as $product) {
+                $quantity = $faker->numberBetween(1, 2);
                 OrderItem::factory()->create([
                     'order_id' => $order->getId(),
                     'product_id' => $product->getId(),

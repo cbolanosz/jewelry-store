@@ -11,17 +11,17 @@ class OrderFactory extends Factory
 {
     public function definition(): array
     {
-        $subtotal = fake()->randomFloat(2, 500, 50000);
+        $subtotal = $this->faker->randomFloat(2, 500, 50000);
         $shippingCost = $subtotal >= 1000 ? 0 : 25;
 
         return [
-            'status' => fake()->randomElement(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']),
-            'shipping_address' => fake()->streetAddress().', '.fake()->city(),
+            'status' => $this->faker->randomElement(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled']),
+            'shipping_address' => $this->faker->streetAddress().', '.$this->faker->city(),
             'subtotal' => $subtotal,
             'shipping_cost' => $shippingCost,
             'total_amount' => round($subtotal + $shippingCost, 2),
             'user_id' => User::factory(),
-            'created_at' => fake()->dateTimeBetween('-1 year'),
+            'created_at' => $this->faker->dateTimeBetween('-1 year'),
         ];
     }
 }
