@@ -146,14 +146,15 @@ docker compose exec app php artisan optimize:clear
 The named Docker volumes preserve Laravel storage and uploaded product
 images across container rebuilds.
 
-## Dependency inversion exception
+## Dependency inversion
 
 The sales report use case applies dependency inversion through the
-`SalesReportGenerator` interface. `PdfSalesReportGenerator` and
-`ExcelSalesReportGenerator` are the two concrete implementations, selected
-by the service container according to the requested format. This is the
-only exception to the project rule that normally prohibits custom interfaces
-and dependency injection.
+`SalesReportGenerator` interface in `app/Contracts`. `PdfSalesReportGenerator`
+and `ExcelSalesReportGenerator` in `app/Reports` are the two concrete
+implementations. `AppServiceProvider` selects one according to the requested
+format, and `AdminSalesReportController` receives the interface as a typed
+method parameter. Interfaces are allowed for dependency inversion, as
+described in the programming rules of the wiki.
 
 ## Test credentials
 | Role | Email | Password |
