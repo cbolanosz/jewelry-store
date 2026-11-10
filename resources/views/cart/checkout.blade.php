@@ -33,7 +33,7 @@
                     @csrf
                     <div class="card-body">
                         <label for="shipping_address" class="form-label">{{ __('cart.shipping_address') }}</label>
-                        <input id="shipping_address" type="text" class="form-control @error('shipping_address') is-invalid @enderror" name="shipping_address" value="{{ old('shipping_address', $viewData['shippingAddress']) }}" required>
+                        <input id="shipping_address" type="text" class="form-control @error('shipping_address') is-invalid @enderror" name="shipping_address" value="{{ old('shipping_address', $viewData['shippingAddress']) }}" autocomplete="street-address" required>
                         @error('shipping_address')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

@@ -19,6 +19,13 @@
         </div>
     </section>
 
+    <section id="about" class="container py-5" aria-labelledby="about-title">
+        <div class="content-section">
+            <h2 id="about-title" class="h3">{{ __('home.about_title') }}</h2>
+            <p class="mb-0">{{ __('home.about_text') }}</p>
+        </div>
+    </section>
+
     @if ($viewData['topProducts']->isNotEmpty())
         <section class="container pt-5">
             <div class="text-center mb-4">
@@ -61,6 +68,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container pb-5" aria-labelledby="contact-title">
+        <div class="content-section">
+            <h2 id="contact-title" class="h3">{{ __('home.contact_title') }}</h2>
+            <p>{{ __('home.contact_text') }}</p>
+            <address class="mb-0">
+                <a href="mailto:{{ __('app.contact_email') }}">{{ __('app.contact_email') }}</a>
+                <span aria-hidden="true"> · </span>
+                <a href="tel:{{ __('app.contact_phone_link') }}">{{ __('app.contact_phone') }}</a>
+            </address>
         </div>
     </section>
 @endsection

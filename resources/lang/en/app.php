@@ -19,4 +19,13 @@ return [
     'language' => 'Language',
     'language_english' => 'English',
     'language_spanish' => 'Spanish',
+    'skip_to_content' => 'Skip to content',
+    'main_navigation' => 'Main navigation',
+    'footer_navigation' => 'Footer navigation',
+    'nav_about' => 'About us',
+    'nav_contact' => 'Contact',
+    'form_error_summary' => 'Please correct the following errors:',
+    'contact_email' => 'hello@jewelrymen.com',
+    'contact_phone' => '+57 300 123 4567',
+    'contact_phone_link' => '+573001234567',
 ];

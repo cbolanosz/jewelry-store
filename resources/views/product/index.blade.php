@@ -17,7 +17,7 @@
             <div class="row g-3 align-items-end">
                 <div class="col-md-4">
                     <label for="search" class="form-label">{{ __('product.search') }}</label>
-                    <input id="search" type="text" class="form-control @error('search') is-invalid @enderror" name="search" value="{{ $viewData['filters']['search'] ?? '' }}" placeholder="{{ __('product.search_placeholder') }}">
+                    <input id="search" type="search" class="form-control @error('search') is-invalid @enderror" name="search" value="{{ old('search', $viewData['filters']['search'] ?? '') }}" placeholder="{{ __('product.search_placeholder') }}" autocomplete="off">
                     @error('search')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

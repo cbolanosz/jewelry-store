@@ -10,7 +10,8 @@
     <title>@yield('title', __('app.brand'))</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-store py-3">
+    <a class="skip-link" href="#main-content">{{ __('app.skip_to_content') }}</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-store py-3" aria-label="{{ __('app.main_navigation') }}">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('home.index') }}">
                 <span class="brand-logo">{{ __('app.brand_short') }}</span>
@@ -38,7 +39,7 @@
                             <button type="submit" class="btn btn-link nav-link">{{ __('app.nav_logout') }}</button>
                         </form>
                     @endguest
-                    <li class="nav-item dropdown ms-lg-2">
+                    <div class="nav-item dropdown ms-lg-2">
                         <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ __('app.language') }}
                         </a>
@@ -46,13 +47,25 @@
                             <li><a class="dropdown-item" href="{{ route('language.switch', ['locale' => 'en']) }}">{{ __('app.language_english') }}</a></li>
                             <li><a class="dropdown-item" href="{{ route('language.switch', ['locale' => 'es']) }}">{{ __('app.language_spanish') }}</a></li>
                         </ul>
-                    </li>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow-1">
+    <main id="main-content" class="flex-grow-1">
+        @if ($errors->any())
+            <div class="container pt-4">
+                <div class="alert alert-danger" role="alert" tabindex="-1">
+                    <p class="fw-semibold mb-2">{{ __('app.form_error_summary') }}</p>
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
         @if (session('status'))
             <div class="container pt-4">
                 <div class="alert alert-success mb-0">{{ session('status') }}</div>
@@ -70,6 +83,15 @@
         <div class="container">
             <p class="brand-name mb-1">{{ __('app.brand') }}</p>
             <small class="text-secondary">{{ __('app.tagline') }} · {{ __('app.footer_team') }}</small>
+            <nav class="footer-links mt-3" aria-label="{{ __('app.footer_navigation') }}">
+                <a href="{{ route('home.index') }}#about">{{ __('app.nav_about') }}</a>
+                <a href="{{ route('home.index') }}#contact">{{ __('app.nav_contact') }}</a>
+            </nav>
+            <address class="footer-contact mb-0 mt-2">
+                <a href="mailto:{{ __('app.contact_email') }}">{{ __('app.contact_email') }}</a>
+                <span aria-hidden="true"> · </span>
+                <a href="tel:{{ __('app.contact_phone_link') }}">{{ __('app.contact_phone') }}</a>
+            </address>
         </div>
     </footer>
 

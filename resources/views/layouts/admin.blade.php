@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="d-flex min-vh-100">
-        <aside class="admin-sidebar d-flex flex-column p-3">
+        <aside class="admin-sidebar d-flex flex-column p-3" aria-label="{{ __('admin.side_navigation') }}">
             <a class="admin-brand d-flex align-items-center gap-2 mb-4" href="{{ route('admin.home.index') }}">
                 <span class="admin-logo">{{ __('app.brand_short') }}</span>
                 <span>{{ __('admin.panel') }}</span>
@@ -43,6 +43,16 @@
             </header>
 
             <main class="flex-grow-1 p-4">
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert" tabindex="-1">
+                        <p class="fw-semibold mb-2">{{ __('app.form_error_summary') }}</p>
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 @if (session('status'))
                     <div class="alert alert-success">{{ session('status') }}</div>
                 @endif
@@ -51,6 +61,9 @@
                 @endif
                 @yield('content')
             </main>
+            <footer class="admin-footer px-4 py-3">
+                <small>{{ __('app.footer_team') }} · {{ __('app.contact_email') }}</small>
+            </footer>
         </div>
     </div>
 

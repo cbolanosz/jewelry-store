@@ -3,6 +3,13 @@
 /* Author: Cristian Bolaños */
 
 return [
+    'first_name_label' => 'First name',
+    'last_name_label' => 'Last name',
+    'email_label' => 'Email address',
+    'phone_label' => 'Phone',
+    'address_label' => 'Address',
+    'password_label' => 'Password',
+    'password_confirmation_label' => 'Confirm password',
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
