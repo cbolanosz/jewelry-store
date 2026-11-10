@@ -3,8 +3,8 @@ set -eu
 
 cd /var/www/html
 
-if [ ! -f .env ]; then
-    echo 'The .env file is required before starting the application.' >&2
+if [ -z "${APP_KEY:-}" ]; then
+    echo 'APP_KEY is required before starting the application.' >&2
     exit 1
 fi
 

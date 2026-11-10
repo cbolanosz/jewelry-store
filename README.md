@@ -103,7 +103,8 @@ docker compose up -d --build
 ```
 
 Set the real `APP_URL`, database credentials and `EXCHANGE_RATE_KEY` before
-starting the container. The entrypoint runs pending migrations and creates
+starting the container. Compose injects `.env` variables into the container;
+the file does not need to be copied into the image. The entrypoint runs pending migrations and creates
 the public storage link. It does not import `database/data.sql`
 automatically, so existing production data cannot be overwritten by a restart.
 
