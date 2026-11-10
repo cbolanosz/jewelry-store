@@ -1,6 +1,6 @@
 {{-- Author: Cristian Bolaños --}}
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +38,15 @@
                             <button type="submit" class="btn btn-link nav-link">{{ __('app.nav_logout') }}</button>
                         </form>
                     @endguest
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('app.language') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="{{ route('language.switch', ['locale' => 'en']) }}">{{ __('app.language_english') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('language.switch', ['locale' => 'es']) }}">{{ __('app.language_spanish') }}</a></li>
+                        </ul>
+                    </li>
                 </div>
             </div>
         </div>

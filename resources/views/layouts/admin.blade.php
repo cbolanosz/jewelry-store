@@ -1,6 +1,6 @@
 {{-- Author: Cristian Bolaños --}}
 <!doctype html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,18 @@
         <div class="flex-grow-1 d-flex flex-column">
             <header class="admin-header d-flex justify-content-between align-items-center px-4 py-3">
                 <h1 class="h5 mb-0">@yield('subtitle', __('admin.dashboard'))</h1>
-                <a class="btn btn-outline-secondary btn-sm" href="{{ route('home.index') }}">{{ __('admin.back_to_store') }}</a>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="dropdown">
+                        <a class="btn btn-outline-secondary btn-sm dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ __('app.language') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="{{ route('language.switch', ['locale' => 'en']) }}">{{ __('app.language_english') }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('language.switch', ['locale' => 'es']) }}">{{ __('app.language_spanish') }}</a></li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-outline-secondary btn-sm" href="{{ route('home.index') }}">{{ __('admin.back_to_store') }}</a>
+                </div>
             </header>
 
             <main class="flex-grow-1 p-4">

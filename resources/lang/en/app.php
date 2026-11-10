@@ -16,4 +16,7 @@ return [
     'nav_logout' => 'Log out',
     'toggle_navigation' => 'Toggle navigation',
     'footer_team' => 'Developed by God\'s programmers',
+    'language' => 'Language',
+    'language_english' => 'English',
+    'language_spanish' => 'Spanish',
 ];
