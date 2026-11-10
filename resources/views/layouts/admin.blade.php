@@ -20,6 +20,8 @@
                 <a class="nav-link" href="{{ route('admin.home.index') }}">{{ __('admin.dashboard') }}</a>
                 <a class="nav-link" href="{{ route('admin.category.index') }}">{{ __('admin.nav_categories') }}</a>
                 <a class="nav-link" href="{{ route('admin.product.index') }}">{{ __('admin.nav_products') }}</a>
+                <a class="nav-link" href="{{ route('admin.report.sales', ['format' => 'pdf']) }}">{{ __('admin.nav_sales_report_pdf') }}</a>
+                <a class="nav-link" href="{{ route('admin.report.sales', ['format' => 'excel']) }}">{{ __('admin.nav_sales_report_excel') }}</a>
             </nav>
         </aside>
 

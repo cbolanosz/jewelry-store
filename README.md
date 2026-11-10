@@ -59,6 +59,18 @@ php artisan serve
 | End-user section (main route) | http://localhost:8000/ |
 | Admin panel (admin role only) | http://localhost:8000/admin |
 
+The admin panel also provides sales reports in PDF and Excel formats:
+`/admin/reports/sales/pdf` and `/admin/reports/sales/excel`.
+
+## Dependency inversion exception
+
+The sales report use case applies dependency inversion through the
+`SalesReportGenerator` interface. `PdfSalesReportGenerator` and
+`ExcelSalesReportGenerator` are the two concrete implementations, selected
+by the service container according to the requested format. This is the
+only exception to the project rule that normally prohibits custom interfaces
+and dependency injection.
+
 ## Test credentials
 | Role | Email | Password |
 |---|---|---|

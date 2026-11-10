@@ -10,6 +10,8 @@ return [
     'welcome_text' => 'Manage the Jewelry Men catalog from the menu on the left.',
     'nav_categories' => 'Categories',
     'nav_products' => 'Products',
+    'nav_sales_report_pdf' => 'Sales report (PDF)',
+    'nav_sales_report_excel' => 'Sales report (Excel)',
     'status' => 'Status',
     'active' => 'Active',
     'inactive' => 'Inactive',

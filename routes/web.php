@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
 // Admin routes
 Route::middleware('admin')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name('admin.home.index');
+    // Admin reports
+    Route::get('/admin/reports/sales/{format}', 'App\Http\Controllers\Admin\AdminSalesReportController@download')
+        ->whereIn('format', ['pdf', 'excel'])
+        ->name('admin.report.sales');
     // Admin categories
     Route::get('/admin/categories', 'App\Http\Controllers\Admin\AdminCategoryController@index')->name('admin.category.index');
     Route::get('/admin/categories/create', 'App\Http\Controllers\Admin\AdminCategoryController@create')->name('admin.category.create');
