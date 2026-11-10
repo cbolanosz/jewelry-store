@@ -49,6 +49,8 @@ Developed by **God's programmers**: Cristian Bolaños (architect), Pablo José B
 
 The project does not use NPM: Bootstrap is loaded from a CDN and the styles live in `public/css`.
 
+The product catalog and admin lists use pagination. The home page includes a localized promotional banner.
+
 ## Running the application
 ```bash
 php artisan serve

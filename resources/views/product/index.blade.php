@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between align-items-center mt-3">
-                <small class="text-secondary">{{ __('product.results', ['count' => $viewData['products']->count()]) }}</small>
+                <small class="text-secondary">{{ __('product.results', ['count' => $viewData['products']->total()]) }}</small>
                 <a class="small" href="{{ route('product.index') }}">{{ __('product.clear_filters') }}</a>
             </div>
         </form>
@@ -67,6 +67,9 @@
                         @include('product.partials.card', ['product' => $product])
                     </div>
                 @endforeach
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                {{ $viewData['products']->withQueryString()->links() }}
             </div>
         @endif
     </section>

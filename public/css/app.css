@@ -47,6 +47,17 @@ body {
     max-width: 640px;
 }
 
+.promotion-banner {
+    background: linear-gradient(135deg, #f3ead1 0%, #fffdf7 100%);
+    border: 1px solid #e8dfc8;
+    color: #2b2413;
+}
+
+.promotion-banner h2 {
+    color: #8a6d1d;
+    font-family: 'Playfair Display', serif;
+}
+
 .feature-card {
     border: 1px solid #e8dfc8;
     border-top: 3px solid #c9a227;

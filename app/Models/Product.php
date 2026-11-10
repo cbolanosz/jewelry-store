@@ -4,6 +4,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -204,7 +205,7 @@ class Product extends Model
         return round($this->getPrice() * (1 - $percentage / 100), 2);
     }
 
-    public static function search(?string $term, ?int $categoryId, ?float $minPrice, ?float $maxPrice): Collection
+    public static function search(?string $term, ?int $categoryId, ?float $minPrice, ?float $maxPrice): LengthAwarePaginator
     {
         $query = Product::with('category')
             ->where('active', true)
@@ -231,7 +232,7 @@ class Product extends Model
             $query->where('price', '<=', $maxPrice);
         }
 
-        return $query->orderBy('name')->get();
+        return $query->orderBy('name')->paginate(12);
     }
 
     public static function topSelling(int $limit): Collection

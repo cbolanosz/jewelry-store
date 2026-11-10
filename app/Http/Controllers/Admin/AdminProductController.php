@@ -17,7 +17,7 @@ class AdminProductController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('product.admin_index_title').' - '.__('admin.panel');
-        $viewData['products'] = Product::with('category')->orderBy('name')->get();
+        $viewData['products'] = Product::with('category')->orderBy('name')->paginate(10);
 
         return view('admin.product.index')->with('viewData', $viewData);
     }

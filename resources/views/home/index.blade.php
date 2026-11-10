@@ -11,6 +11,14 @@
         </div>
     </section>
 
+    <section class="container py-4" aria-labelledby="home-banner-title">
+        <div class="promotion-banner rounded-3 p-4 p-md-5 text-center">
+            <h2 id="home-banner-title" class="h3 mb-2">{{ __('home.banner_title') }}</h2>
+            <p class="mb-3">{{ __('home.banner_text') }}</p>
+            <a class="btn btn-gold" href="{{ route('product.index') }}">{{ __('home.banner_button') }}</a>
+        </div>
+    </section>
+
     @if ($viewData['topProducts']->isNotEmpty())
         <section class="container pt-5">
             <div class="text-center mb-4">

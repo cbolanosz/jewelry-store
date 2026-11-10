@@ -75,6 +75,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="p-3">
+                    {{ $viewData['products']->links() }}
+                </div>
             @endif
         </div>
     </div>

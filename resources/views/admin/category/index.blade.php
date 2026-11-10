@@ -63,6 +63,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="p-3">
+                    {{ $viewData['categories']->links() }}
+                </div>
             @endif
         </div>
     </div>
